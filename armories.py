@@ -19,7 +19,7 @@ class armories:
         print(response)
         print(jsonObject)
 
-    #장착한 아이템
+    #프로필
     def profile(self):
         url = f'https://developer-lostark.game.onstove.com/armories/characters/{self.name}/profiles'
 
@@ -27,7 +27,12 @@ class armories:
         jsonObject = response.json()
 
         print(response)
-        print(jsonObject)
+        
+
+        print(jsonObject['CharacterImage'])
+        print(jsonObject['ServerName'])
+        print(jsonObject['CharacterLevel'])
+        print(jsonObject['ItemAvgLevel'])
 
     #장비
     def equipment(self):
