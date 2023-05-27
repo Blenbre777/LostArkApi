@@ -21,18 +21,18 @@ class armories:
 
     #프로필
     def profile(self):
+        data = [] 
         url = f'https://developer-lostark.game.onstove.com/armories/characters/{self.name}/profiles'
 
         response = requests.get(url,headers=self.headers)
         jsonObject = response.json()
-
-        print(response)
         
+        data.append(jsonObject['CharacterImage'])
+        data.append(jsonObject['ServerName'])
+        data.append(jsonObject['CharacterLevel'])
+        data.append(jsonObject['ItemAvgLevel'])
 
-        print(jsonObject['CharacterImage'])
-        print(jsonObject['ServerName'])
-        print(jsonObject['CharacterLevel'])
-        print(jsonObject['ItemAvgLevel'])
+        return data 
 
     #장비
     def equipment(self):
