@@ -12,11 +12,16 @@ class guilds:
     
     #길드 랭킹 , 이름 
     def guilds(self):    
+        rank = []
+        guildName =[]
+
         url = f'https://developer-lostark.game.onstove.com/guilds/rankings?serverName={self.server}'
 
         response = requests.get(url,headers=self.headers)
         jsonObject = response.json()
         
         for list in jsonObject :
-            print(list.get("Rank"))
-            print(list.get("GuildName"))
+            rank.append(list.get("Rank"))
+            guildName.append(list.get("GuildName"))
+        
+        return rank , guildName
