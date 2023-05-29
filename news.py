@@ -8,6 +8,7 @@ class news:
 
     #공지사항 
     def notice():
+        TitleName=[]
         headers = {
             'accept': 'application/json',
             'authorization' : Token
@@ -18,4 +19,6 @@ class news:
         jsonObject = response.json()
 
         for list in jsonObject[:10]:
-            print(list.get("Title"))
+            TitleName.append(list.get("Title"))
+
+        return TitleName
