@@ -11,6 +11,7 @@ class markets:
 
     #itemID 추출
     def markets():
+        code_list=[]
         headers = {
             'accept': 'application/json',
             'authorization' : Token
@@ -19,9 +20,15 @@ class markets:
 
         response = requests.get(url,headers=headers)
         jsonObject = response.json()
+        
+        data =  (jsonObject.get('Categories'))
+        for item in data:
+            code = item['Code']
+            code_name = item['CodeName']
+            code_list.append((code,code_name))
+        return code_list
 
-        print(jsonObject)
-
+    #itemID 기반 검색 
     def markets_search(self):
         url = f'https://developer-lostark.game.onstove.com/markets/items/{self.itemId}'
 
